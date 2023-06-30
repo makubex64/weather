@@ -11,6 +11,7 @@ function convertUnixTimeToDate(unixUtc: number): Date {
 }
 
 export const WeatherEntry: FC<WeatherEntryProps> = ({ weather }) => {
+  
   return (
     <div>
       <div>{convertUnixTimeToDate(weather.dt).toLocaleTimeString()}</div>
@@ -20,12 +21,14 @@ export const WeatherEntry: FC<WeatherEntryProps> = ({ weather }) => {
       </div>
       <div>Humidity: {weather.main.humidity}%</div>
       {weather.weather.map(condition =>
-        <div key={condition.id}>
+        <div className="bg-info" key={condition.id}>
           <img 
           src={getIconUrl(condition.icon)} alt={condition.main} 
           /> 
-          {condition.main} 
-          {condition.description}
+          {condition.main}
+          {" "}
+         {"("} {condition.description} {")"}
+          
         </div>)
       }
     </div>
