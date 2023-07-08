@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://makubex64.github.io/wheater",
+  "homepage": "https://makubex64.github.io/weather",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
