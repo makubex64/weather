@@ -35,27 +35,40 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className="container">
-        <h1>Weather App</h1>
+      <div className="container-fluid">
+        <div className="row">
 
-        <LocationSearch onSearch={addLocation} />
-        {
-          error
-            ? <div className={`alert alert-danger`}>{error}</div>
-            : null
-        }
-        {
-          warning
-            ? <div className={`alert alert-warning`}>{warning}</div>
-            : null
-        }
-        <LocationTable
-          onSelect={location => setCurrentLocation(location)}
-          current={currentLocation}
-          locations={locations}
-        />
+          <div className="col-md-6 offset-md-3 mt-5">
+            <h1 className='text-center display-3'>Weather App</h1>
+            <LocationSearch onSearch={addLocation} />
+            {
+              error
+                ? <div className={`alert alert-danger`}>{error}</div>
+                : null
+            }
+            {
+              warning
+                ? <div className={`alert alert-warning`}>{warning}</div>
+                : null
+            }
 
-        <WeatherSummary location={currentLocation} />
+          </div>
+        </div>
+
+
+        <div className="row">
+          <div className="col-4">
+            <LocationTable
+              onSelect={location => setCurrentLocation(location)}
+              current={currentLocation}
+              locations={locations}
+            />
+          </div>
+
+          <div className="col-8">
+            <WeatherSummary location={currentLocation} />
+          </div>
+        </div>
 
       </div>
 

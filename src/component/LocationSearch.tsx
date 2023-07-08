@@ -12,16 +12,17 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({ onSearch }) => {
 
     const disableSearch = locationSearch.trim() === "";
     const addLocation = () => {
-        onSearch(locationSearch); 
+        onSearch(locationSearch);
         setLocationSearch("");
     }
 
     return (
-        <div className="">
-            <label >
-                add locations <input className="ml-1 mr-1" type="text" value={locationSearch} onChange={(e) => setLocationSearch(e.target.value)} />
-            </label>
-            <button className="btn btn-primary" onClick={addLocation} disabled={disableSearch} >search</button>
+        
+        <div className="input-group mb-3">
+            
+            <input className="me-auto form-control" placeholder="search locations" type="text" value={locationSearch} onChange={(e) => setLocationSearch(e.target.value)} aria-label="Recipient's username" aria-describedby="button-addon2"/>
+            <button className="btn btn-outline-primary" onClick={addLocation} disabled={disableSearch} >search</button>
+
         </div>
     )
 

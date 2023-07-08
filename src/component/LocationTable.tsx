@@ -8,9 +8,9 @@ interface LocationTableProps {
 }
 
 export const LocationTable: FC<LocationTableProps> = ({locations, onSelect, current}) =>
-  <div>
+  <div className="">
     <h2>Locations</h2>
-    <table className="table table-hover">
+    <table className="table table-hover ">
       <thead>
       <tr>
         <th>Name</th>
