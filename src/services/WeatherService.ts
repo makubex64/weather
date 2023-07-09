@@ -37,5 +37,5 @@ export async function readForecast(locationId: number): Promise<Weather[]> {
   
   if (forecast.status !== 200) throw new Error('Failed to read location data');
 
-  return current.data;
+  return forecast.data;
 }
