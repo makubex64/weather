@@ -1,5 +1,6 @@
 import { WeatherLocation } from "../model/Weather";
 import { Weather } from "../model/Weather";
+import axios from 'axios';
 
 //const key: string = process.env.REACT_APP_OPEN_WEATHER_API_KEY as string;
 const key: string = "4f06fa7a22d3e454f15cbf4a0587e5f6";
@@ -11,20 +12,20 @@ const keyQuery = `appid=${key}`
 const server = 'https://api.openweathermap.org/data/2.5';
 
 export async function searchLocation(term: string): Promise<WeatherLocation | undefined> {
-  const result = await fetch(`${server}/weather?q=${term}&${keyQuery}`);
+  const result = await axios.get(`${server}/weather?q=${term}&${keyQuery}`);
 
   if (result.status === 404) return undefined;
   if (result.status !== 200) throw new Error('Failed to read location data');
 
-  return await result.json();
+  return result.data;
 }
 
 export async function readWeather(locationId: number): Promise<Weather> {
-  const current = await fetch(`${server}/weather?id=${locationId}&${keyQuery}&units=metric`);
+    const current = await axios.get(`${server}/weather?id=${locationId}&${keyQuery}&units=metric`);
 
-  if (current.status !== 200) throw new Error('Failed to read location data');
+    if (current.status !== 200) throw new Error('Failed to read location data');
 
-  return await current.json();
+    return current.data;
 }
 
 export function getIconUrl(code: string): string {
